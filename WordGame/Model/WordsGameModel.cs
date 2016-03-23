@@ -1,22 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using WordGame.Database;
 
 namespace WordGame.Model
 {
     public class WordsGameModel : IWordsGameModel
     {
-        private const int MaxWordsCount = 10;
         private readonly string baseWord;
         private readonly IWordsDataBase wordsDataBase;
         private readonly Dictionary<char, int> baseLetters;
-        private List<WordScore> topWords = new List<WordScore>(); 
-
+        private List<WordScore> topWords = new List<WordScore>();
+        private int MaxWordsCount;
 
         public WordsGameModel(string baseWord, IWordsDataBase wordsDataBase)
         {
             this.baseWord = baseWord;
             this.wordsDataBase = wordsDataBase;
             baseLetters = GetLettersDictionary(baseWord);
+            ReadMaxWordsCountFromConfig();
         }
 
         public string GetBaseWord()
@@ -124,6 +125,14 @@ namespace WordGame.Model
             }
             
             return true;
+        }
+
+        public void ReadMaxWordsCountFromConfig()
+        {
+            if(int.TryParse(ConfigurationManager.AppSettings["MaxWordCount"], out MaxWordsCount) == false)
+            {
+                MaxWordsCount = 10; // default
+            }
         }
     }
 }

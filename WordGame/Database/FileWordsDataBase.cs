@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 
 namespace WordGame.Database
 {
     class FileWordsDataBase : IWordsDataBase
     {
-        private const string DefaultFilename = "Resourses/wordlist.txt";
         private readonly HashSet<string> words; 
 
-        public FileWordsDataBase(string filename = DefaultFilename)
+        public FileWordsDataBase(string filename = null)
         {
+            if (filename == null)
+                filename = ConfigurationManager.AppSettings["WordListFileName"];
+
             words = new HashSet<string>(System.IO.File.ReadAllLines(filename));
         }
 
