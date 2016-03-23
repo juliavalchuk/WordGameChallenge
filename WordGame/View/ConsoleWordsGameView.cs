@@ -1,6 +1,6 @@
 using System;
 
-namespace WordGame
+namespace WordGame.View
 {
     class ConsoleWordsGameView : IWordsGameView
     {

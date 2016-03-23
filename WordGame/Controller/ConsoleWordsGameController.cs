@@ -1,6 +1,8 @@
 using System;
+using WordGame.Model;
+using WordGame.View;
 
-namespace WordGame
+namespace WordGame.Controller
 {
     public class ConsoleWordsGameController : IWordsGameController
     {

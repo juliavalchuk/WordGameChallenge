@@ -1,4 +1,4 @@
-﻿namespace WordGame
+﻿namespace WordGame.Model
 {
     public interface IWordsGameModel
     {

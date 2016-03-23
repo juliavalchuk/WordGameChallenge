@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using WordGame.Database;
 
-namespace WordGame
+namespace WordGame.Model
 {
     public class WordsGameModel : IWordsGameModel
     {

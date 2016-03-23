@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace WordGame
+namespace WordGame.Database
 {
-    public interface IWordsDataBase
-    {
-        bool IsWord(string word);
-    }
-
     class FileWordsDataBase : IWordsDataBase
     {
+        private const string DefaultFilename = "Resourses/wordlist.txt";
         private readonly HashSet<string> words; 
 
-        public FileWordsDataBase(string filename = "wordlist.txt")
+        public FileWordsDataBase(string filename = DefaultFilename)
         {
             words = new HashSet<string>(System.IO.File.ReadAllLines(filename));
         }
