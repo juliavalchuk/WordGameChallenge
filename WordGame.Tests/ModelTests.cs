@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WordGame.Database;
+using WordGame.Model;
 
 namespace WordGame.Tests
 {

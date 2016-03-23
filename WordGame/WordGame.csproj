@@ -43,16 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleWordsGameView.cs" />
-    <Compile Include="IWordsDataBase.cs" />
-    <Compile Include="IWordsGameController.cs" />
-    <Compile Include="IWordsGameModel.cs" />
-    <Compile Include="IWordsGameView.cs" />
+    <Compile Include="Database\FileWordsDataBase.cs" />
+    <Compile Include="View\ConsoleWordsGameView.cs" />
+    <Compile Include="Database\IWordsDataBase.cs" />
+    <Compile Include="Controller\IWordsGameController.cs" />
+    <Compile Include="Model\IWordsGameModel.cs" />
+    <Compile Include="View\IWordsGameView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WordScore.cs" />
-    <Compile Include="ConsoleWordsGameController.cs" />
-    <Compile Include="WordsGameModel.cs" />
+    <Compile Include="Model\WordScore.cs" />
+    <Compile Include="Controller\ConsoleWordsGameController.cs" />
+    <Compile Include="Model\WordsGameModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

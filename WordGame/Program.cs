@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WordGame.Controller;
+using WordGame.Database;
+using WordGame.Model;
+using WordGame.View;
 
 namespace WordGame
 {
