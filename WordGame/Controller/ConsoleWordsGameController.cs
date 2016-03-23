@@ -19,20 +19,20 @@ namespace WordGame.Controller
 
         public void Play()
         {
-            _wordsGameView.WriteLine("Welcome to the Game!");
-            _wordsGameView.WriteLine("Base word is: " + _wordsGameModel.GetBaseWord());
+            WriteLine("Welcome to the Game!");
+            WriteLine("Base word is: " + _wordsGameModel.GetBaseWord());
 
             playing = true;
             while (playing)
             {
-                _wordsGameView.WriteLine("Enter word to submit. Enter @<number> to get word at position. Enter #<number> to get score at position. Enter * to exit");
+                WriteLine("Enter word to submit. Enter @<number> to get word at position. Enter #<number> to get score at position. Enter * to exit");
                 
                 var enteredLine = Console.ReadLine();
                 StringEntered(enteredLine);
-                _wordsGameView.WriteLine(""); // empty line
+                WriteLine(""); // empty line
             }
             
-            _wordsGameView.WriteLine("Bye!");
+            WriteLine("Bye!");
             Console.ReadKey();
         }
 
@@ -72,11 +72,11 @@ namespace WordGame.Controller
             var result = _wordsGameModel.SubmitWord(userString);
             if (result)
             {
-                _wordsGameView.WriteLine("Word submitted");
+                WriteLine("Word submitted");
             }
             else
             {
-                _wordsGameView.WriteLine("Word not submitted");
+                WriteLine("Word not submitted");
             }
         }
 
@@ -85,11 +85,11 @@ namespace WordGame.Controller
             var score = _wordsGameModel.GetScoreAtPosition(GetNumberFromChar(userString[1]));
             if (score == 0)
             {
-                _wordsGameView.WriteLine("Word not found");
+                WriteLine("Word not found");
             }
             else
             {
-                _wordsGameView.WriteLine(score.ToString());
+                WriteLine(score.ToString());
             }
         }
 
@@ -98,12 +98,17 @@ namespace WordGame.Controller
             var word = _wordsGameModel.GetWordEntryAtPosition(GetNumberFromChar(userString[1]));
             if (word == null)
             {
-                _wordsGameView.WriteLine("Word not found");
+                WriteLine("Word not found");
             }
             else
             {
-                _wordsGameView.WriteLine(word);
+                WriteLine(word);
             }
+        }
+        
+        private void WriteLine(string content)
+        {
+            _wordsGameView.WriteLine(content);
         }
 
         private int GetNumberFromChar(char c)
