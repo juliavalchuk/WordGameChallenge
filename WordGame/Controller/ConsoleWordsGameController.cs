@@ -19,20 +19,23 @@ namespace WordGame.Controller
 
         public void Play()
         {
-            WriteLine("Welcome to the Game!");
-            WriteLine("Base word is: " + _wordsGameModel.GetBaseWord());
+            WriteLine(Resources.Controller_WelcomeToGame);
+            WriteLine(String.Format(Resources.Controller_IntroduceBaseWord, _wordsGameModel.GetBaseWord()));
 
             playing = true;
             while (playing)
             {
-                WriteLine("Enter word to submit. Enter @<number> to get word at position. Enter #<number> to get score at position. Enter * to exit");
-                
+                WriteLine(Resources.Controller_SubmitWordTip + " " +
+                          Resources.Controller_PositionTip + " " +
+                          Resources.Controller_ScoreTip + " " +
+                          Resources.Controller_ExitTip);
+
                 var enteredLine = Console.ReadLine();
                 StringEntered(enteredLine);
                 WriteLine(""); // empty line
             }
             
-            WriteLine("Bye!");
+            WriteLine(Resources.Controller_ByeMessage);
             Console.ReadKey();
         }
 
@@ -41,19 +44,19 @@ namespace WordGame.Controller
             if (userString.Length == 0)
                 return;
 
-            if (userString[0] == '@')
+            if (userString[0] == Resources.Contoller_PositionSign[0])
             {
                 HandleGetEntryAtPosition(userString);
                 return;
             }
 
-            if (userString[0] == '#')
+            if (userString[0] == Resources.Controller_ScoreSign[0])
             {
                 HandleGetScoreAtPosition(userString);
                 return;
             }
 
-            if (userString[0] == '*')
+            if (userString[0] == Resources.Controller_ExitSign[0])
             {
                 HandleExit();
                 return;
@@ -72,11 +75,11 @@ namespace WordGame.Controller
             var result = _wordsGameModel.SubmitWord(userString);
             if (result)
             {
-                WriteLine("Word submitted");
+                WriteLine(Resources.Controller_WordSubmitted);
             }
             else
             {
-                WriteLine("Word not submitted");
+                WriteLine(Resources.Controller_WordNotSubmitted);
             }
         }
 
@@ -85,7 +88,7 @@ namespace WordGame.Controller
             var score = _wordsGameModel.GetScoreAtPosition(GetNumberFromChar(userString[1]));
             if (score == 0)
             {
-                WriteLine("Word not found");
+                WriteLine(Resources.Controller_WordNotFound);
             }
             else
             {
@@ -98,7 +101,7 @@ namespace WordGame.Controller
             var word = _wordsGameModel.GetWordEntryAtPosition(GetNumberFromChar(userString[1]));
             if (word == null)
             {
-                WriteLine("Word not found");
+                WriteLine(Resources.Controller_WordNotFound);
             }
             else
             {
